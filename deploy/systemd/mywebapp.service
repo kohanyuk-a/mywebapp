@@ -1,0 +1,12 @@
+[Unit]
+Description=MyWebApp
+After=network.target postgresql.service
+
+[Service]
+User=app
+WorkingDirectory=/opt/mywebapp
+ExecStart=/usr/bin/java -jar /opt/mywebapp/mywebapp.jar --spring.config.location=/etc/mywebapp/application.yml
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
