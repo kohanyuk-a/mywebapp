@@ -1,13 +1,21 @@
 server:
-  address: 127.0.0.1
+  address: 0.0.0.0
   port: 8080
 
 spring:
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/mywebapp
-    username: mywebapp
-    password: mywebapp
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://127.0.0.1:5432/mywebapp}
+    username: ${SPRING_DATASOURCE_USERNAME:mywebapp}
+    password: ${SPRING_DATASOURCE_PASSWORD:mywebapp}
+    driver-class-name: org.postgresql.Driver
+
+  flyway:
+    enabled: false
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
