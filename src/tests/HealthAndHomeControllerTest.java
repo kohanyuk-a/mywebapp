@@ -74,6 +74,8 @@ class HealthAndHomeControllerTest {
                 .standaloneSetup(new HomeController())
                 .build();
 
+
+
         homeMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith("text/html"))
